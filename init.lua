@@ -20,13 +20,13 @@
 --
 --   -- The above is functionally equivalent to:
 --   key = ezconfig.key
---   globalkeys = awful.util.table.join(
+--   globalkeys = gears.table.join(
 --      key('M-<Left>', awful.tag.viewprev),
 --      key('M-S-j', {awful.client.swap.byidx, 1}),
 --   )
 --
 --   -- Which is in turn equivalent to:
---   globalkeys = awful.util.table.join(
+--   globalkeys = gears.table.join(
 --      awful.key({modkey}, 'Left', awful.tag.viewprev),
 --      awful.key({modkey, 'Shift'}, 'j', function () awful.client.swap.byidx(1) end),
 --   )
@@ -39,6 +39,7 @@
 --   })
 
 local awful = require('awful')
+local gears = require('gears')
 
 local ezconfig = {}
 ezconfig.btntable = {}
@@ -136,7 +137,7 @@ function ezconfig.keytable.join(tbl)
       table.insert(res, ezconfig.key(keydef, callback))
    end
 
-   return awful.util.table.join(unpack(res))
+   return gears.table.join(unpack(res))
 end
 
 function ezconfig.btntable.join(tbl)
@@ -145,7 +146,7 @@ function ezconfig.btntable.join(tbl)
       table.insert(res, ezconfig.btn(btndef, callback))
    end
 
-   return awful.util.table.join(unpack(res))
+   return gears.table.join(unpack(res))
 end
 
 
