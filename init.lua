@@ -44,15 +44,12 @@ local gears = require('gears')
 local ezconfig = {}
 ezconfig.btntable = {}
 ezconfig.keytable = {}
-ezconfig.modkey = 'Mod4'
-ezconfig.altkey = 'Mod1'
 
-
-local modifier_keys = {
-   ['M'] = ezconfig.modkey,
+ezconfig.modifier_keys = {
+   ['M'] = 'Mod4',
    ['S'] = 'Shift',
    ['C'] = 'Control',
-   ['A'] = ezconfig.altkey,
+   ['A'] = 'Mod1',
 }
 
 local function split(s, sep)
@@ -92,8 +89,8 @@ function ezconfig.key(keydef, callback, newkeyfunc)
    local keys = {}
 
    for _, key in ipairs(split(keydef, '-')) do
-      if modifier_keys[key] ~= nil then
-         table.insert(modkeys, modifier_keys[key])
+      if ezconfig.modifier_keys[key] ~= nil then
+         table.insert(modkeys, ezconfig.modifier_keys[key])
       else
          if #key == 1 or string.sub(key, 1, 1) == "#" then
             table.insert(keys, key)
@@ -122,8 +119,8 @@ function ezconfig.btn(btndef, callback, newbtnfunc)
    local button = nil
 
    for _, key in ipairs(split(btndef, '-')) do
-      if modifier_keys[key] ~= nil then
-         table.insert(modkeys, modifier_keys[key])
+      if ezconfig.modifier_keys[key] ~= nil then
+         table.insert(modkeys, ezconfig.modifier_keys[key])
       else
          button = tonumber(key)
          return newbtnfunc(modkeys, button, callback)
