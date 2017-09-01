@@ -10,8 +10,14 @@ Usage
 ```lua
 ezconfig = require('ezconfig')
 
-ezconfig.modkey = 'Mod4'
-ezconfig.altkey = 'Mod1'
+-- Default configuration.  If you want different modkeys,
+-- you'll need to recreate the whole table in your rc.lua.
+ezconfig.modifier_keys = {
+    ['M'] = "Mod4",
+    ['A'] = "Mod1",
+    ['S'] = "Shift",
+    ['C'] = "Control",
+}
 
 globalkeys = ezconfig.keytable.join({
    ['M-<Left>'] = awful.tag.viewprev,

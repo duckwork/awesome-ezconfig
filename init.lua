@@ -8,8 +8,12 @@
 -- Usage:
 --   ezconfig = require('ezconfig')
 --
---   ezconfig.modkey = 'Mod4'
---   ezconfig.altkey = 'Mod1'
+--   ezconfig.modifier_keys = { -- default
+--      ['M'] = "Mod4",
+--      ['A'] = "Mod1",
+--      ['S'] = "Shift",
+--      ['C'] = "Control",
+--   }
 --
 --   globalkeys = ezconfig.keytable.join({
 --      ['M-<Left>'] = awful.tag.viewprev,
